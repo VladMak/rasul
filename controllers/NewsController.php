@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * Copyright (C) 2019 vladislav
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,20 +17,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//FRONT CONTORLLER
+include_once ROOT . '/models/News.php';
 
-//1. Общие настройки
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
-//2. Подключение файлов системы
-define("ROOT", dirname(__FILE__));
-require_once ROOT . '/components/Router.php';
-
-//3. Установка соединения с БД
-
-
-//4. Вызов Router
-$router = new Router();
-$router->run();
-
+/**
+ * Description of NewsController
+ *
+ * @author vladislav
+ */
+class NewsController {
+    
+    public function  actionIndex(){
+        $newsList = array();
+        $newsList = News::getNewsList();
+        
+        echo '<pre>';
+        print_r($newsList);
+        echo '</pre>';
+        return true;
+    }
+    
+    public function actionView($category, $id){
+        echo $category;
+        echo 'Просмотр одной новости';
+        return true;
+    }
+    
+}
