@@ -30,9 +30,9 @@ class News {
      */
     public static function getNewsItemById($id){
         $host = 'localhost';
-        $dbname = '';
-        $user = 'root';
-        $password = '';
+        $dbname = 'rasul';
+        $user = 'user';
+        $password = 'qwerty';
         $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
         
         $newsList = array();

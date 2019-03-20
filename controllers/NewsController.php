@@ -25,21 +25,31 @@ include_once ROOT . '/models/News.php';
  * @author vladislav
  */
 class NewsController {
-    
-    public function  actionIndex(){
+
+    public function actionIndex() {
         $newsList = array();
         $newsList = News::getNewsList();
-        
+
         echo '<pre>';
         print_r($newsList);
         echo '</pre>';
         return true;
     }
-    
-    public function actionView($category, $id){
-        echo $category;
-        echo 'Просмотр одной новости';
+
+    public function actionView($category, $id) {
+
+        //echo $category;
+        //echo 'Просмотр одной новости';
+        function block(){
+            while (true){
+                $string = yield;
+                echo $string;
+            }
+        }
+        
+        $block = block();
+        $block->send("Hello PHP");
         return true;
     }
-    
+
 }
